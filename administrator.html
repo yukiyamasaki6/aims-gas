@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <title>AIMS管理マニュアル</title>
+
+    <link rel="stylesheet" href="inform.css">
+    <link rel="icon" href="images/icon.ico">
+
+</head>
+
+<body>
+    <div id="header">
+        <a href="index.html" class="top">AIMSマニュアル</a>
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="user.html">User<br>使用者</a>
+                    <ul>
+                        <li><a href="user.html#joint">合同練習</a></li>
+                        <li><a href="user.html#quota">ノルマ練習</a></li>
+                        <li><a href="user.html#game/self">試合結果/自己新</a></li>
+                        <li><a href="user.html#instant">リアルタイム集計</a></li>
+                        <li><a href="user.html#uniform">ユニフォーム</a></li>
+                        <li><a href="user.html#view">点数閲覧</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="operator.html">Operator<br>運営者</a>
+                    <ul>
+                        <li><a href="operator.html#update">部員構成の変更</a></li>
+                        <li><a href="operator.html#set">ノルマ練習の設定</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="administrator.html">Administrator<br>管理者</a>
+                    <ul>
+                        <li><a href="#concept">設計思想</a></li>
+                        <li><a href="#structure">構成オブジェクト</a></li>
+                        <li><a href="#flow">データの流れ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <p class="title">・AIMS管理マニュアル</p>
+    </div>
+
+    <h1 id="system">システム構成</h1>
+    <div class="h1">
+
+        <h2 id="concept"><span class="h2">設計思想</span></h2>
+        <div class="h2">
+            <p>
+                AIMSは以下のような目的と優先順位で設計されています<br>
+                システムの更新は設計思想を理解した上で、必要だと思った場合に行なってください
+            </p>
+            <ol>
+                <li>
+                    データが失われないように<br>
+                    Ex）GASでエラーが発生した場合は処理を中断する。シートを保護する。
+                </li>
+                <li>
+                    スマホから入力しやすいように<br>
+                    Ex）縦型のレイアウト、リストでの入力
+                </li>
+                <li>
+                    軽く動作するように<br>
+                    Ex）関数でスプレッドシートをまたぐ処理をしない。不要なセルは削除する。
+                </li>
+                <li>
+                    想定外の入力をされないように<br>
+                    Ex）セルを保護する。データの入力規制を設定する。
+                </li>
+                <li>
+                    引き継ぎやすいように<br>
+                    Ex）引継ぎマニュアルを更新する。GASにコメントを記述する。
+                </li>
+                <li>
+                    維持作業が少なく済むように<br>
+                    Ex）自動化できる部分は自動化する。
+                </li>
+            </ol>
+        </div>
+
+        <h2 id="structure"><span class="h2">構成オブジェクト</span></h2>
+        <div class="h2">
+            以前は公開していましたが、リアルタイムのコード更新に追いつかないため、希望者はその時のAIMS管理者に連絡してGASプロジェクトへのアクセス権をもらってください。
+        </div>
+
+        <h2 id="flow"><span class="h2">データの流れ</span></h2>
+        <div class="h2">
+            <p>オブジェクト間のデータのやりとりを把握しやすくするために図示する</p>
+            <img src="images/data_flow.svg" alt="画像が表示できません">
+        </div>
+    </div>
+</body>
+</html>

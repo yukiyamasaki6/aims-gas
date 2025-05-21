@@ -1,0 +1,182 @@
+/* body全体のスタイル */
+body {
+	background-color: white;
+}
+
+/* ヘッダのスタイル */
+div#header {
+	text-align: center;
+}
+
+a.top {
+	font-size: 40px;
+	color: black;
+	text-decoration: none;
+	margin: 0;
+}
+
+	a.top:hover {
+		text-decoration: underline;
+	}
+
+ul.menu {
+	text-align: center;
+	background: #e5ccff;
+	padding: 0;
+	margin: 0;
+}
+
+	ul.menu li {
+		display: inline-block;
+		position: relative;
+		font-size: 20px;
+	}
+
+		ul.menu li a {
+			display: block;
+			text-align: center;
+			width: 150px;
+			color: black;
+			text-decoration: none;
+		}
+
+		ul.menu li ul {
+			display: none;
+		}
+
+		/* ホバーした際のデザイン */
+		ul.menu li:hover {
+			background: #e6ffcc;
+		}
+
+			ul.menu li:hover ul {
+				display: block;
+				position: absolute;
+				padding: 0;
+				margin: 0;
+				top: 60px;
+				left: 0;
+				background: #d3a8ff;
+				width: 138px;
+				border: 6px solid #e6ffcc;
+			}
+
+				ul.menu li:hover ul li {
+					font-size: 15px;
+					width: 138px;
+				}
+
+					ul.menu li:hover ul li a {
+						display: block;
+						text-align: center;
+						line-height: 40px;
+						color: black;
+						text-decoration: none;
+						width: 138px;
+					}
+					/* さらにホバーした際のデザイン */
+					ul.menu li:hover ul li:hover {
+						background: #d4ffa8;
+					}
+
+p.title {
+	background-color: lightgray;
+	text-align: left;
+	padding: 0;
+	color: #003300;
+	font-size: 25px;
+	margin: 0;
+}
+
+/* 本文のスタイル */
+h1 {
+	background-color: #e5ccff; /* 薄い紫 */
+}
+
+div.h1 {
+	padding-left: 10px;
+}
+
+h2 {
+	text-indent: 25px;
+}
+
+span.h2 {
+	background: #e5ccff; /* 薄い紫 */
+	padding: 3px;
+}
+
+div.h2 {
+	padding-left: 25px;
+}
+
+h3 {
+	text-indent: 25px
+}
+
+span.h3 {
+	background: linear-gradient(transparent 60%, #e5ccff 30%);
+}
+
+div.h3 {
+	padding-left: 25px;
+}
+
+details {
+	padding-bottom: 20px;
+}
+
+div.details {
+	padding-left: 25px;
+}
+
+summary {
+	color: #8a2be2;
+	font-weight: bold;
+}
+
+details dt {
+	font-weight: bold;
+}
+
+/* 手順テーブルのスタイル */
+table.process {
+	width: 100%;
+}
+
+	table.process td {
+		width: 50%;
+		vertical-align: top;
+	}
+	table.process td.divide {
+		padding-left: 20px;
+		font-weight: bold;
+	}
+
+/* ページ内リンクのスタイル */
+a.jump {
+	text-decoration: none;
+}
+
+	a.jump:visited {
+		color: #0000EE;
+	}
+
+/* プログラムのスタイル */
+details.code summary{
+	color: black;
+}
+
+/* 画像のスタイル */
+img {
+	width: 100%;
+}
+
+/* 個人情報保護表示のスタイル */
+p#message {
+	background-color: white;
+	padding: 30px;
+	color: black;
+	font-size: 50px;
+	text-align: center
+}

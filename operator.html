@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <title>AIMS運営マニュアル</title>
+
+    <link rel="stylesheet" href="inform.css">
+    <link rel="icon" href="images/icon.ico">
+
+</head>
+
+<body>
+    <div id="header">
+        <a href="index.html" class="top">AIMSマニュアル</a>
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="user.html">User<br>使用者</a>
+                    <ul>
+                        <li><a href="user.html#joint">合同練習</a></li>
+                        <li><a href="user.html#quota">ノルマ練習</a></li>
+                        <li><a href="user.html#game/self">試合結果/自己新</a></li>
+                        <li><a href="user.html#instant">リアルタイム集計</a></li>
+                        <li><a href="user.html#uniform">ユニフォーム</a></li>
+                        <li><a href="user.html#view">点数閲覧</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="operator.html">Operator<br>運営者</a>
+                    <ul>
+                        <li><a href="operator.html#update">部員構成の変更</a></li>
+                        <li><a href="operator.html#set">ノルマ練習の設定</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="administrator.html">Administrator<br>管理者</a>
+                    <ul>
+                        <li><a href="administrator.html#concept">設計思想</a></li>
+                        <li><a href="administrator.html#structure">構成オブジェクト</a></li>
+                        <li><a href="administrator.html#flow">データの流れ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <p class="title">・AIMS運営マニュアル</p>
+    </div>
+
+    <h1 id="maintain">維持方法</h1>
+    <div class="h1">
+        <p>※維持管理はパソコンからの操作を推奨する(パソコンでしかできない操作もある)</p>
+
+        <h2 id="update"><span class="h2">部員構成の変更</span></h2>
+        <div class="h2">
+            <p>※<a href="#manage" class="jump">管理システムの名簿の更新</a>、<a href="#joint" class="jump">合同練習の名簿の更新</a>、<a href="#quota" class="jump">ノルマ練習の名簿の更新</a>を全て行う</p>
+
+            <h3 id="manage"><span class="h3">管理システムの名簿の更新</span></h3>
+            <div class="h3">
+                <table class="process">
+                    <tr>
+                        <td colspan="2">
+                            <ol>
+                                <li>点数集計システムの部員名簿シートを開く</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="divide">
+                            A部員を削除する場合
+                        </td>
+                        <td class="divide">
+                            B部員を追加する場合
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol start="2">
+                                <li>該当行を削除する</li>
+                            </ol>
+                        </td>
+                        <td>
+                            <ol start="2">
+                                <li>適切な位置(上から代&キャンパス&氏名順)に行を追加する</li>
+                                <li>
+                                    各項目を入力形式に従って入力する(下記以外は入力形式の指定なし)
+                                    <ul>
+                                        <li>入学年：西暦、半角数字4桁</li>
+                                        <li>学年：入力しない(入学年から自動計算)</li>
+                                        <li>氏名：名字 名前(半角スペースに注意)</li>
+                                        <li>性別：男or女</li>
+                                        <li>所属：中百舌鳥or杉本</li>
+                                    </ul>
+                                </li>
+                                <li>D1セルに「更新」を入力する</li>
+                                <li>「更新」が消えたら更新完了</li>
+                            </ol>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 id="joint"><span class="h3">合同練習の名簿の更新</span></h3>
+            <div class="h3">
+                <table class="process">
+                    <tr>
+                        <td colspan="2">
+                            <ol>
+                                <li>中百舌鳥：合同練習管理or杉本：合同練習管理のテンプレシートを開く</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="divide">
+                            A部員を削除する場合
+                        </td>
+                        <td class="divide">
+                            B部員を追加する場合
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol start="2">
+                                <li>該当の2行を削除する</li>
+                            </ol>
+                        </td>
+                        <td>
+                            <ol start="2">
+                                <li>適切な位置(上から代&キャンパス&氏名順)に2行追加<br>※一番下の12行の空白行は残したまま</li>
+                                <li>既に入力されている部員の2行をコピーし、追加した2行にペーストする</li>
+                                <li>部員の名前を「名字 名前」(半角スペースに注意)の形式で入力する</li>
+                            </ol>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 id="quota"><span class="h3">ノルマ練習の名簿の更新</span></h3>
+            <div class="h3">
+                <table class="process">
+                    <tr>
+                        <td colspan="2">
+                            <ol>
+                                <li>中百舌鳥：合同練習管理or杉本：合同練習管理のテンプレシートを開く</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="divide">
+                            A部員を削除する場合
+                        </td>
+                        <td class="divide">
+                            B部員を追加する場合
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ol start="2">
+                                <li>該当の3行を削除する</li>
+                            </ol>
+                        </td>
+                        <td>
+                            <ol start="2">
+                                <li>適切な位置(上から代&キャンパス&氏名順)に3行追加<br>※一番下の12行の空白行は残したまま</li>
+                                <li>既に入力されている部員の3行をコピーし、追加した3行にペーストする</li>
+                                <li>部員の名前を「名字 名前」(半角スペースに注意)の形式で入力する</li>
+                            </ol>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <h2 id="set"><span class="h2">ノルマ練習の設定</span></h2>
+        <div class="h2">
+            <ol>
+                <li>中百舌鳥：ノルマ練習管理or杉本：ノルマ練習管理のテンプレシートを開く</li>
+                <li>テンプレシートのコピーを作成する</li>
+                <li>コピー後のシートの名前を変更する</li>
+                <li>B1セルにノルマ数を半角数字で入力する(数字以外は書式で自動入力)</li>
+                <li>(帰省などの理由でノルマ数を減らす人がいる場合)、名前の一つ下のセルにノルマ数を半角数字で入力する(数字以外は書式で自動入力)</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

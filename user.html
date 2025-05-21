@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <title>AIMS使用マニュアル</title>
+
+    <link rel="stylesheet" href="inform.css">
+    <link rel="icon" href="images/icon.ico">
+
+</head>
+
+<body>
+    <div id="header">
+        <a href="index.html" class="top">AIMSマニュアル</a>
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="user.html">User<br>使用者</a>
+                    <ul>
+                        <li><a href="user.html#joint">合同練習</a></li>
+                        <li><a href="user.html#quota">ノルマ練習</a></li>
+                        <li><a href="user.html#game/self">試合結果/自己新</a></li>
+                        <li><a href="user.html#instant">リアルタイム集計</a></li>
+                        <li><a href="user.html#uniform">ユニフォーム</a></li>
+                        <li><a href="user.html#view">点数閲覧</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="operator.html">Operator<br>運営者</a>
+                    <ul>
+                        <li><a href="operator.html#update">部員構成の変更</a></li>
+                        <li><a href="operator.html#set">ノルマ練習の設定</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="administrator.html">Administrator<br>管理者</a>
+                    <ul>
+                        <li><a href="administrator.html#concept">設計思想</a></li>
+                        <li><a href="administrator.html#structure">構成オブジェクト</a></li>
+                        <li><a href="administrator.html#flow">データの流れ</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <p class="title">・AIMS使用マニュアル</p>
+    </div>
+
+    <h1 id="enter">入力方法</h1>
+    <div class="h1">
+        <p>前提<br>Goosleスプレッドシートアプリのインストール</p>
+
+        <h2 id="joint"><span class="h2">合同練習</span></h2>
+        <div class="h2">
+            <p>※試合形式の合同練習は別途<a href="#instant" class="jump">「試合リアルタイム集計」</a>の入力方法を参照してください</p>
+            <ol>
+                <li>大阪公立大学アーチェリー部の目次シートを開く</li>
+                <li>キャンパス別に合同練習入力用のスプレッドシートを開く</li>
+                <li>入力したい日付のシートを開く</li>
+                <li>出欠、射数、距離と点数を入力する</li>
+            </ol>
+            <img src="images/input_gouren.jpg" alt="画像が表示できません">
+        </div>
+
+        <h2 id="quota"><span class="h2">ノルマ練習</span></h2>
+        <div class="h2">
+            <ol>
+                <li>大阪公立大学アーチェリー部の目次シートを開く</li>
+                <li>キャンパス別にノルマ練習入力用のスプレッドシートを開く</li>
+                <li>入力したい期間のシートを開く</li>
+                <li>入力様式に従って、上部に距離、中部に点数(近射は射数)or空白、下部に日付を入力する</li>
+            </ol>
+            <img src="images/input_noruma.jpg" alt="画像が表示できません">
+        </div>
+
+        <h2 id="game/self"><span class="h2">試合結果/自主練</span></h2>
+        <div class="h2">
+            <ol>
+                <li>大阪公立大学アーチェリー部の目次シートを開く</li>
+                <li>その他点数入力用のフォームを開く</li>
+                <li>フォームの指示に従って入力を行う</li>
+            </ol>
+            <img src="images/input_form.jpg" alt="画像が表示できません">
+        </div>
+
+        <h2 id="instant"><span class="h2">試合リアルタイム集計</span></h2>
+        <div class="h2">
+            <table class="process">
+                <tr>
+                    <td colspan="2">
+                        <ol>
+                            <li>大阪公立大学アーチェリー部の目次シートを開く</li>
+                            <li>試合集計用のスプレッドシートを開く</li>
+                            <li>団体戦シートか個人戦シートを開く</li>
+                            <li>試合を行う距離を入力する</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="divide">
+                        A団体戦の場合
+                    </td>
+                    <td class="divide">
+                        B個人戦の場合
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ol start="5">
+                            <li>勝敗の判定方法を選ぶ</li>
+                        </ol>
+                    </td>
+                    <td>
+                        <ol start="5">
+                            <li>立ち形式を選ぶ</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <ol start="6">
+                            <li>試合形式を選択する</li>
+                            <li>立ちに氏名を入力する</li>
+                            <li>1エンド終了ごとに点数を入力する</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <ol start="9">
+                            <li>同点の場合はX数10数を入力する</li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+            <img src="images/input_game.jpg" alt="画像が表示できません">
+            <b>終了後(運営者のみ)</b>
+            <table class="prpcess">
+                <tr>
+                    <td>
+                        <ol start="10">
+                            <li>点数集計システムの試合結果シートを開く</li>
+                            <li>B1セルに「取得」を入力する</li>
+                            <li>取得が消えたら取得完了</li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <h2 id="uniform"><span class="h2">ユニフォーム貸出</span></h2>
+        <div class="h2">
+            <ol>
+                <li>大阪公立大学アーチェリー部の目次シートを開く</li>
+                <li>リンク、もしくはシートの選択から点数一覧シートを開く</li>
+                <li>ユニフォームの貸出状態を更新する</li>
+            </ol>
+            <img src="images/input_uniform.jpg" alt="画像が表示できません">
+        </div>
+    </div>
+
+    <h1 id="view">閲覧方法</h1>
+    <div class="h1">
+        <ol>
+            <li>大阪公立大学アーチェリー部の目次シートを開く</li>
+            <li>リンク、もしくはシートの選択から点数一覧シートを開く</li>
+            <li>フィルタの内容を組み替えて、欲しい情報を閲覧する</li>
+        </ol>
+        <img src="images/view.jpg" alt="画像が表示できません">
+    </div>
+</body>
+</html>
