@@ -32,11 +32,11 @@ function readMemberMap(isActive = true) {
 function readScoreData() {
   return [].concat(
     readFormData(),
-    readDb("中百舌鳥：合同練習")[1],
-    readDb("杉本：合同練習")[1],
-    readDb("中百舌鳥：ノルマ練習")[1],
-    readDb("杉本：ノルマ練習")[1],
-    readDb("試合")[1],
+    readDbData("中百舌鳥：合同練習")[1],
+    readDbData("杉本：合同練習")[1],
+    readDbData("中百舌鳥：ノルマ練習")[1],
+    readDbData("杉本：ノルマ練習")[1],
+    readDbData("試合")[1],
   );
 }
 
@@ -92,7 +92,7 @@ function readFormData() {
   return scoreData;
 }
 
-function readDb(name) {
+function readDbData(name) {
   // 結果を取得
   var ss = SpreadsheetApp.openById(SS_IDS.DB);
   var sheet = ss.getSheetByName(name);
