@@ -34,10 +34,10 @@
           <li>
             <a href="administrator.html">Administrator<br />管理者</a>
             <ul>
-              <li><a href="administrator.html#concept">設計思想</a></li>
               <li>
-                <a href="administrator.html#structure">構成オブジェクト</a>
+                <a href="administrator.html#github">GitHub</a>
               </li>
+              <li><a href="administrator.html#concept">設計思想</a></li>
               <li><a href="administrator.html#flow">データの流れ</a></li>
             </ul>
           </li>
@@ -45,33 +45,21 @@
       </nav>
     </div>
 
-    <h1 id="maintain">維持方法</h1>
+    <h1 id="maintain">維持管理手順</h1>
     <div class="h1">
-      <p>
-        ※維持管理はパソコンからの操作を推奨する(パソコンでしかできない操作もある)
-      </p>
+      <p>※維持管理はパソコンからの操作を推奨する</p>
 
       <h2 id="update_member"><span class="h2">部員情報の更新</span></h2>
       <div class="h2">
-        <p>
-          ※<a href="#update_system_member" class="jump"
-            >管理システムの名簿の更新</a
-          >、<a href="#update_gouren_member" class="jump"
-            >合同練習の名簿の更新</a
-          >、<a href="#update_noruma_member" class="jump"
-            >ノルマ練習の名簿の更新</a
-          >を全て行う
-        </p>
-
-        <h3 id="update_system_member">
-          <span class="h3">管理システムの名簿の更新</span>
+        <h3>
+          <span class="h3">データベースの名簿更新</span>
         </h3>
         <div class="h3">
           <table class="process">
             <tr>
               <td colspan="2">
                 <ol>
-                  <li>点数集計システムの部員名簿シートを開く</li>
+                  <li>点数データベースの名簿シートを開く</li>
                 </ol>
               </td>
             </tr>
@@ -91,11 +79,10 @@
                   <li>
                     各項目を入力形式に従って入力する(下記以外は入力形式の指定なし)
                     <ul>
-                      <li>入学年：西暦、半角数字4桁</li>
-                      <li>学年：入力しない(入学年から自動計算)</li>
                       <li>氏名：名字 名前(半角スペースに注意)</li>
-                      <li>性別：男or女</li>
+                      <li>代：半角数字</li>
                       <li>所属：中百舌鳥or杉本</li>
+                      <li>性別：男or女</li>
                     </ul>
                   </li>
                   <li>F1セルに「更新」を入力する</li>
@@ -106,8 +93,8 @@
           </table>
         </div>
 
-        <h3 id="update_gouren_member">
-          <span class="h3">合同練習の名簿の更新</span>
+        <h3>
+          <span class="h3">合同練習の名簿更新</span>
         </h3>
         <div class="h3">
           <table class="process">
@@ -148,8 +135,8 @@
           </table>
         </div>
 
-        <h3 id="update_noruma_member">
-          <span class="h3">ノルマ練習の名簿の更新</span>
+        <h3>
+          <span class="h3">ノルマ練習の名簿更新</span>
         </h3>
         <div class="h3">
           <table class="process">
@@ -157,7 +144,7 @@
               <td colspan="2">
                 <ol>
                   <li>
-                    中百舌鳥：合同練習管理or杉本：合同練習管理のテンプレシートを開く
+                    中百舌鳥：合同練習or杉本：合同練習のテンプレシートを開く
                   </li>
                 </ol>
               </td>
@@ -194,9 +181,7 @@
       <h2 id="set_noruma"><span class="h2">ノルマ練習の設定</span></h2>
       <div class="h2">
         <ol>
-          <li>
-            中百舌鳥：ノルマ練習管理or杉本：ノルマ練習管理のテンプレシートを開く
-          </li>
+          <li>中百舌鳥：ノルマ練習or杉本：ノルマ練習のテンプレシートを開く</li>
           <li>テンプレシートのコピーを作成する</li>
           <li>コピー後のシートの名前を変更する</li>
           <li>
