@@ -1,26 +1,24 @@
+/**
+ * ポータル用スプレッドシートの名簿シートを最新の部員名簿に基づいて書き換え．
+ *
+ * @param {Object<string, Object>} memberMap - {氏名: 部員の属性情報オブジェクト}のマップ．
+ */
 function updatePortalMember(memberMap) {
-  // 大阪公立大学アーチェリー部/名簿を取得
   var ss = SpreadsheetApp.openById(SS_IDS.PORTAL);
   var sheet = ss.getSheetByName("名簿");
 
-  // 列名を取得
   var headerValues = sheet.getRange(1, 1, 1, sheet.getMaxColumns()).getValues();
   var header = headerValues[0].map((h) => h.toString().trim());
 
-  // 保存用配列を作成
-  var outputValues = Object.values(memberMap).map((row) => {
-    return header.map((key) => row[key] || "");
-  });
-
-  // データの最終行を取得
   var lastRow = sheet.getLastRow();
-
-  // 既存のデータを削除
   if (lastRow > 1) {
     sheet.getRange(2, 1, lastRow - 1, header.length).clearContent();
   }
 
-  // 新しいデータを保存
+  // 変更後の名簿データを2行目以降に挿入
+  var outputValues = Object.values(memberMap).map((rowObj) => {
+    return header.map((key) => rowObj[key] || "");
+  });
   sheet
     .getRange(2, 1, outputValues.length, header.length)
     .setValues(outputValues);

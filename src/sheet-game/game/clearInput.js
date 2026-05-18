@@ -1,11 +1,13 @@
+/**
+ * 試合集計システムから，指定されたシートの入力領域をクリアする．
+ *
+ * @param {Object} meta - シート名とクリア対象範囲の配列を含むメタ情報オブジェクト．
+ */
 function clearGameInput(meta) {
-  // 保存元のスプレッドシート(試合集計システム)を取得
-  var sourceSpreadsheet = SpreadsheetApp.openById(SS_IDS.GAME);
+  var ss = SpreadsheetApp.openById(SS_IDS.GAME);
+  var sheet = ss.getSheetByName(meta.name);
 
-  // 保存元のシートを取得
-  var sheet = sourceSpreadsheet.getSheetByName(meta.name);
-
-  // データをクリア
+  // メタ情報で指定されたすべての入力範囲のデータをクリア
   meta.clearRanges.forEach(function (rangeStr) {
     sheet.getRange(rangeStr).clearContent();
   });

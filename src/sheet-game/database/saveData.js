@@ -1,19 +1,22 @@
+/**
+ * データベースの指定されたシートに対し，新しい点数データを追加する．
+ *
+ * @param {string} name - 対象となるシート名．
+ * @param {Array<Object>} newData - 追加する点数オブジェクト配列．
+ */
 function saveScoreData(name, newData) {
-  // 保存先のシートを取得
   var ss = SpreadsheetApp.openById(SS_IDS.DB);
   var sheet = ss.getSheetByName(name);
 
-  // 列名を取得
   var colNames = readScoreHeader(name);
 
-  // 保存用の二次元配列を生成
-  var outputValues = newData.map(function (row) {
+  var outputValues = newData.map(function (rowObj) {
     return colNames.map(function (colName) {
-      return row[colName] || "";
+      return rowObj[colName] || "";
     });
   });
 
-  // 範囲を指定して保存
+  // 既存データの最終行の直後に新しいデータを追加
   sheet
     .getRange(sheet.getLastRow() + 1, 1, outputValues.length, colNames.length)
     .setValues(outputValues);

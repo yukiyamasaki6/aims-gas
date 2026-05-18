@@ -1,8 +1,12 @@
+/**
+ * 点数申告フォームの氏名の選択肢を最新の部員名簿に基づいて書き換える．
+ *
+ * @param {Object<string, Object>} memberMap - {氏名: 部員の属性情報オブジェクト}のマップ．
+ */
 function updateFormMember(memberMap) {
-  // 点数申告フォーム/氏名を取得
   var form = FormApp.openById(FORM_IDS.SCORE);
 
-  // 氏名の選択肢を書き換え
+  // フォーム内の項目を走査し，氏名アイテムの選択肢を更新
   for (let item of form.getItems()) {
     if (item.getTitle() === "氏名") {
       item.asListItem().setChoiceValues(Object.keys(memberMap));

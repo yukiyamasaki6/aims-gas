@@ -1,65 +1,59 @@
+/**
+ * ノルマ練習管理用のスプレッドシートから全てのシートを読み取り，点数データの一次元配列と日付をシートごとのマップで取得．
+ *
+ * @param {string} id - 対象となるスプレッドシートのID．
+ * @returns {[Object<string, Array<Object>>, Object<string, Date>]} [{シートID: 点数オブジェクト配列}のマップ, {シートID: 日付}のマップ]のペア．
+ */
 function fetchNorumaData(id) {
-  // すべてのシートを取得
   var ss = SpreadsheetApp.openById(id);
   var sheets = ss.getSheets();
 
-  // テンプレシートを除く各シートを集計
   var sheetMap = {};
   var sheetDate = {};
+
+  // 1番目のシートはテンプレートのためスキップ
   for (var i = 1; i < sheets.length; i++) {
     var sheet = sheets[i];
-
-    // シートIDを取得
     var sheetId = sheet.getSheetId().toString();
 
-    // シートの存在を記録
     sheetMap[sheetId] = [];
     sheetDate[sheetId] = null;
 
-    // データの最終行を取得
+    // 列名ヘッダを除いた5行目以降のデータを取得
     var lastRow = sheet.getLastRow();
+    var dataRowCount = lastRow - 4;
 
-    // データがなければ処理をスキップ
-    if (lastRow <= 4) {
+    if (dataRowCount <= 0) {
       continue;
     }
 
-    // データを取得(4行目までは列名)
     var rows = sheet
-      .getRange(5, 1, lastRow - 4, sheet.getMaxColumns())
+      .getRange(5, 1, dataRowCount, sheet.getMaxColumns())
       .getValues();
 
-    // 人ごとに集計
+    // 距離行，点数行，日付行の3行で1部員分のデータとして処理
     for (var j = 0; j < rows.length - 2; j += 3) {
-      // 氏名を取得
       var name = rows[j][0];
-
-      // 氏名が空なら処理を終了
       if (name == "") {
         break;
       }
 
-      // 処理中の日付を記録
       var date = "";
 
-      // 点数を集計
+      // C列以降に記録されている練習記録を取得
       for (var k = 2; k < rows[0].length; k++) {
-        // 距離が空なら処理を終了
         if (rows[j][k] == "") {
           break;
         }
 
-        // 日付が入力されているなら日付を更新
         if (rows[j + 2][k] != "") {
           date = rows[j + 2][k];
         }
 
-        // 距離が近射、もしくは点数がない、もしくは日付が空なら処理をスキップ
         if (rows[j][k] == "近射" || rows[j + 1][k] === "" || date == "") {
           continue;
         }
 
-        // データを追加
         sheetMap[sheetId].push({
           シートID: sheetId,
           日付: date,
@@ -68,6 +62,7 @@ function fetchNorumaData(id) {
           距離: rows[j][k],
           点数: rows[j + 1][k],
         });
+
         if (!sheetDate[sheetId] || sheetDate[sheetId]) {
           sheetDate[sheetId] = date;
         }
@@ -75,6 +70,5 @@ function fetchNorumaData(id) {
     }
   }
 
-  // 結果を返す
   return [sheetMap, sheetDate];
 }

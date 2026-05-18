@@ -1,7 +1,6 @@
 // スクリプトプロパティから環境変数を一括取得
 const properties = PropertiesService.getScriptProperties().getProperties();
 
-// スプレッドシートID
 const SS_IDS = {
   DB: properties.DB_SS_ID,
   PORTAL: properties.PORTAL_SS_ID,
@@ -19,7 +18,6 @@ const SS_IDS = {
   },
 };
 
-// フォームID
 const FORM_IDS = {
   SCORE: properties.SCORE_FORM_ID,
 };

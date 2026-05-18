@@ -1,17 +1,18 @@
+/**
+ * 試合集計システムから指定されたシートの試合結果を読み込み，点数オブジェクト配列として返す．
+ *
+ * @param {Object} meta - シート名，データセル範囲，形式セル範囲を含むメタ情報オブジェクト．
+ * @returns {Array<Object>|null} 点数オブジェクト配列．データが存在しない場合はnull．
+ */
 function fetchGameData(meta) {
-  // 保存元のスプレッドシート(試合集計システム)を取得
-  var sourceSpreadsheet = SpreadsheetApp.openById(SS_IDS.GAME);
+  var ss = SpreadsheetApp.openById(SS_IDS.GAME);
+  var sheet = ss.getSheetByName(meta.name);
 
-  // 保存元のシートを取得
-  var sheet = sourceSpreadsheet.getSheetByName(meta.name);
-
-  // 試合結果を取得
   var sourceData = [];
   meta.dataRanges.forEach(function (rangeStr) {
     sourceData = sourceData.concat(sheet.getRange(rangeStr).getValues());
   });
 
-  // データが存在するか確認（すべての行の氏名が空ならデータなしと判定）
   var hasData = false;
   for (var i = 0; i < sourceData.length; i++) {
     if (sourceData[i][0] != "") {
@@ -20,40 +21,33 @@ function fetchGameData(meta) {
     }
   }
 
-  // データがないなら終了
   if (!hasData) {
     return null;
   }
 
-  // 各シートの点取り形式を取得
   var format = sheet.getRange(meta.formatRange).getValue();
 
-  // 日付を取得
   var today = new Date();
   var date =
     today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
 
-  // 保存用配列を生成
   var scoreData = [];
 
-  // 人ごとに成形(人数分ループ)
+  // 前半・後半の2行で1部員分のデータとして処理
   for (var j = 0; j < sourceData.length; j += 2) {
-    //氏名が空ならスキップ
     if (sourceData[j][0] == "") {
       continue;
     }
 
-    //氏名を取得
     var name = sourceData[j][0];
 
-    //距離が50/30なら
+    // 距離が50/30（SH形式）の場合
     if (
       sourceData[j][1] == "50m" &&
       sourceData[j + 1][1] == "30m" &&
       sourceData[j][8] != 0 &&
       sourceData[j + 1][8] != 0
     ) {
-      //点数を取得
       var totalScore =
         sourceData[j][8] +
         "/" +
@@ -61,7 +55,6 @@ function fetchGameData(meta) {
         "/" +
         (sourceData[j][8] + sourceData[j + 1][8]);
 
-      //データを追加（sheet-database形式）
       scoreData.push({
         日付: date,
         形式: format,
@@ -70,17 +63,13 @@ function fetchGameData(meta) {
         点数: totalScore,
       });
     } else {
-      //距離別に成型
       for (var k = 0; k < 2; k++) {
-        //距離が空、点数が0ならスキップ
         if (sourceData[j + k][1] == "" || sourceData[j + k][8] == 0) {
           continue;
         }
 
-        //距離を取得
         var distance = sourceData[j + k][1];
 
-        //データを追加
         scoreData.push({
           日付: date,
           形式: format,

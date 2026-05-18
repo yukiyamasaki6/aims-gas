@@ -1,29 +1,28 @@
+/**
+ * 合同練習入力用のスプレッドシートに最新の日付の入力用シートを追加する．
+ *
+ * @param {string} id - 対象となるスプレッドシートのID．
+ */
 function addGourenSheet(id) {
-  // 合同練習管理用スプレッドシートを取得
   var ss = SpreadsheetApp.openById(id);
 
-  // シート数が1なら処理を終了
-  if (ss.getNumSheets() == 1) {
+  if (ss.getNumSheets() < 2) {
     return;
   }
 
-  // 最新のシートを取得
+  var templateSheet = ss.getSheets()[0];
   var latestSheet = ss.getSheets()[1];
-
-  // 今日の日付を取得
   var today = new Date();
   var date = Utilities.formatDate(today, "Asia/Tokyo", "M/d");
 
-  // 最新のシートが今日のシートなら処理を終了
   if (date == latestSheet.getSheetName().replace(" ", "")) {
     return;
   }
 
-  // 出欠から点数の一列目までを取得
   var inputArray = latestSheet.getRange("B3:F").getValues();
-
-  // 出欠の入力が無いか確認
   var inputCheck = false;
+
+  // 出欠が1箇所でも入力されているか確認
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < inputArray.length; j += 2) {
       if (inputArray[j][i] == true) {
@@ -36,7 +35,7 @@ function addGourenSheet(id) {
     }
   }
 
-  // 点数の入力が無いか確認
+  // 点数が1箇所でも入力されているか確認
   for (var i = 0; i < inputArray.length - 1; i += 2) {
     if (inputArray[i][4] != "") {
       inputCheck = true;
@@ -44,21 +43,17 @@ function addGourenSheet(id) {
     }
   }
 
-  // 入力が有るなら新たなシートを生成
+  // 既存の最新シートに入力形跡がある場合のみテンプレートを複製
   if (inputCheck) {
-    // テンプレのシートを複製
-    var templateSheet = ss.getSheets()[0];
     var generatedSheet = templateSheet.copyTo(ss);
 
-    // 複製後のシートを2番目に移動
     generatedSheet.activate();
     ss.moveActiveSheet(2);
+
+    latestSheet = ss.getSheets()[1];
   }
 
-  // (改めて)最新のシートを取得
-  latestSheet = ss.getSheets()[1];
-
-  // 最新のシートの名前を変更
+  // シート名の重複を回避するため末尾に空白を付与
   for (;;) {
     if (ss.getSheetByName(date) == null) {
       latestSheet.setName(date);
