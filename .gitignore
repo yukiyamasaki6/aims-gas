@@ -1,5 +1,6 @@
-# GAS開発ツールの個人認証情報
-.clasprc.json
+# GASプロジェクトの機密情報
+*.clasprc.json
+*.clasp.json
 
 # PowerPointファイル
 *.pptx
