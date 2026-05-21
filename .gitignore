@@ -1,4 +1,7 @@
-# GASプロジェクトの機密情報
+# Node.jsの依存関係
+node_modules/
+
+# GASの設定ファイル
 *.clasprc.json
 *.clasp.json
 

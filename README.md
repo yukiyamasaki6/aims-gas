@@ -20,29 +20,37 @@ https://yukiyamasaki6.github.io/aims-gas/
 1. https://script.google.com/home/usersettings にアクセス
 2. Google Apps Script API を オン に変更
 
-### 2. clasp のインストールと認証
+### 2. 依存関係のインストール
 
 ```bash
-npm install -g @google/clasp
-clasp login
+npm install
+```
+
+### 3. clasp の認証
+
+```bash
+npx clasp login
+```
+
+### 4. GAS プロジェクトとの同期
+
+```bash
+# 1. 対象のプロジェクトディレクトリへ移動
+cd packages/<project-dir>
+
+# 2. example をコピーして .clasp.json を作成
+cp .clasp.json.example .clasp.json
+
+# 3. GAS プロジェクト ID を .clasp.json に記入
+
+# 4. GAS プロジェクトの内容をローカルに取り込む
+# ※ ローカルの内容は上書きされるため注意
+npx clasp pull
 ```
 
 ## デプロイ（ローカル -> GAS）
 
 ```bash
 cd packages/<project-dir>
-clasp push
+npx clasp push
 ```
-
-ローカルの変更を指定した GAS プロジェクトに反映させます．
-`<project-dir>` には対象のプロジェクトを指定してください．
-
-## 取得（GAS -> ローカル）
-
-```bash
-cd packages/<project-dir>
-clasp pull
-```
-
-GAS プロジェクトの最新状態をローカルに反映させます．
-`<project-dir>` には対象のプロジェクトを指定してください．

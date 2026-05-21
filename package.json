@@ -1,0 +1,13 @@
+{
+  "name": "aims-gas",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@google/clasp": "^3.3.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
