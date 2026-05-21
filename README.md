@@ -10,8 +10,8 @@ https://yukiyamasaki6.github.io/aims-gas/
 ## ディレクトリ構成
 
 - docs: 操作マニュアル用 HTML
-- src/sheet-database: 集計データベース用 GAS プロジェクト
-- src/sheet-game: 試合記録用 GAS プロジェクト
+- packages/sheet-database: 集計データベース用 GAS プロジェクト
+- packages/sheet-game: 試合記録用 GAS プロジェクト
 
 ## セットアップ（初回のみ）
 
@@ -30,19 +30,19 @@ clasp login
 ## デプロイ（ローカル -> GAS）
 
 ```bash
-cd src/<project-dir>
+cd packages/<project-dir>
 clasp push
 ```
 
-このコマンドは，ローカルの変更を指定した GAS プロジェクトに反映させます．
+ローカルの変更を指定した GAS プロジェクトに反映させます．
 `<project-dir>` には対象のプロジェクトを指定してください．
 
 ## 取得（GAS -> ローカル）
 
 ```bash
-cd src/<project-dir>
+cd packages/<project-dir>
 clasp pull
 ```
 
-このコマンドは，GAS プロジェクトの最新状態をローカルに反映させます．
+GAS プロジェクトの最新状態をローカルに反映させます．
 `<project-dir>` には対象のプロジェクトを指定してください．
