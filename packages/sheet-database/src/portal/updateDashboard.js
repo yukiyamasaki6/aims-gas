@@ -104,7 +104,11 @@ function divideSH(input) {
 
     // SH（50/30/GT）のデータを50m，30m，SHの3レコードに分割して追加
     if (rowObj["距離"] == "SH(50/30/GT)") {
-      var splitScore = rowObj["点数"].split("/");
+      var splitScore = String(rowObj["点数"]).split("/");
+
+      if (splitScore.length < 3) {
+        continue;
+      }
 
       output.push({
         ...rowObj,
