@@ -12,18 +12,7 @@ function updateDashboard(scoreData, memberMap) {
   scoreData = filterMember(scoreData, memberMap);
   scoreData = divideSH(scoreData);
   scoreData = addRecord(scoreData);
-
-  // 自己新，試合新，最新のデータを残して1000件に制限
-  scoreData.sort(function (a, b) {
-    if (a["自己新"] != "" && b["自己新"] == "") return -1;
-    if (a["自己新"] == "" && b["自己新"] != "") return 1;
-    if (a["試合新"] != "" && b["試合新"] == "") return -1;
-    if (a["試合新"] == "" && b["試合新"] != "") return 1;
-    if (a["日付"] > b["日付"]) return -1;
-    if (a["日付"] < b["日付"]) return 1;
-    return 0;
-  });
-  scoreData.splice(1000);
+  scoreData = limitSize(scoreData, 1000);
 
   var ss = SpreadsheetApp.openById(SS_IDS.PORTAL);
   var sheet = ss.getSheetByName("点数");
@@ -193,4 +182,29 @@ function addRecord(input) {
   }
 
   return output;
+}
+
+/**
+ * 自己新・試合新・最新を優先して点数データを指定件数に制限する．
+ *
+ * @param {Array<Object>} input - 点数オブジェクト配列．
+ * @param {number} limit - 保持する最大レコード数．
+ * @returns {Array<Object>} 指定件数以下に制限された配列．
+ */
+function limitSize(input, limit) {
+  if (input.length <= limit) {
+    return input;
+  }
+
+  // 自己新 > 試合新 > 最新が優先されるようにソート
+  input.sort(function (a, b) {
+    if (a["自己新"] != "" && b["自己新"] == "") return -1;
+    if (a["自己新"] == "" && b["自己新"] != "") return 1;
+    if (a["試合新"] != "" && b["試合新"] == "") return -1;
+    if (a["試合新"] == "" && b["試合新"] != "") return 1;
+    if (a["日付"] > b["日付"]) return -1;
+    if (a["日付"] < b["日付"]) return 1;
+  });
+
+  return input.slice(0, limit);
 }
