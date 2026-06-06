@@ -11,8 +11,18 @@ function updateDashboard(scoreData, memberMap) {
 
   scoreData = filterMember(scoreData, memberMap);
   scoreData = divideSH(scoreData);
+
+  // 元の順序を維持するためのインデックスを追加
+  scoreData = scoreData.map((rowObj, index) => ({
+    ...rowObj,
+    _index: index,
+  }));
+
   scoreData = addRecord(scoreData);
   scoreData = limitSize(scoreData, 1000);
+
+  // 元の順序に並び替え
+  scoreData.sort((a, b) => a._index - b._index);
 
   var ss = SpreadsheetApp.openById(SS_IDS.PORTAL);
   var sheet = ss.getSheetByName("点数");
