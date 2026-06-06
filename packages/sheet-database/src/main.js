@@ -64,7 +64,7 @@ function prepareDailySheet() {
   var date = new Date();
   var linkData =
     '=HYPERLINK("https://docs.google.com/forms/d/e/' +
-    FORM_IDS.SCORE +
+    FORM_IDS.SCORE.EDIT +
     "/viewform?usp=pp_url&entry.341669978=" +
     Utilities.formatDate(date, "Asia/Tokyo", "yyyy-MM-dd") +
     '","　点数申告フォーム")';

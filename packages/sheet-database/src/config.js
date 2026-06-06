@@ -19,5 +19,8 @@ const SS_IDS = {
 };
 
 const FORM_IDS = {
-  SCORE: properties.SCORE_FORM_ID,
+  SCORE: {
+    INPUT: properties.SCORE_INPUT_FORM_ID,
+    EDIT: properties.SCORE_EDIT_FORM_ID,
+  },
 };
