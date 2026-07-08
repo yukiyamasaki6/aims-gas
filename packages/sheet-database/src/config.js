@@ -24,3 +24,5 @@ const FORM_IDS = {
     EDIT: properties.SCORE_EDIT_FORM_ID,
   },
 };
+
+const GEMINI_API_KEY = properties.GEMINI_API_KEY;

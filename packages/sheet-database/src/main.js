@@ -95,3 +95,16 @@ function syncMemberMaster() {
 
   currRange.clearContent();
 }
+
+/**
+ * POSTリクエストを受け取り，AI分析を実行する．
+ * 実行タイミング：外部からのPOSTリクエスト．
+ */
+function doPost(e) {
+  try {
+    updateAiAnalytics();
+    return ContentService.createTextOutput("AI分析を実行しました");
+  } catch (error) {
+    return ContentService.createTextOutput("AI分析の実行に失敗しました");
+  }
+}
