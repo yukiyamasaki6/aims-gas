@@ -13,6 +13,7 @@
 - docs: 操作マニュアル用 HTML
 - packages/sheet-database: 集計データベース用 GAS プロジェクト
 - packages/sheet-game: 試合記録用 GAS プロジェクト
+- packages/sheet-portal: ポータル用 GAS プロジェクト
 
 ## セットアップ（初回のみ）
 
