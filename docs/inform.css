@@ -138,4 +138,5 @@ a.jump:visited {
 /* 画像のスタイル */
 img {
   width: 100%;
+  max-width: 500pt;
 }
